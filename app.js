@@ -4,11 +4,15 @@
 angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController', NarrowItDownController)
 .service('MenuSearchService', MenuSearchService)
+.directive('foundItems', foundItemsDirective)
 .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com/menu_items.json");
 
 
-MenuCategoriesController.$inject = ['MenuCategoriesService'];
-function MenuCategoriesController(MenuCategoriesService) {
+NarrowItDownController.$inject = ['MenuSearchService', 'foundItems'];
+function NarrowItDownController(MenuSearchService, foundItems) {
+
+  // getMatchedMenuItems
+  // store the result in a property called found
   var menu = this;
 
   var promise = MenuCategoriesService.getMenuCategories();
@@ -34,8 +38,8 @@ function MenuCategoriesController(MenuCategoriesService) {
 }
 
 
-MenuCategoriesService.$inject = ['$http', 'ApiBasePath'];
-function MenuCategoriesService($http, ApiBasePath) {
+MenuSearchService.$inject = ['$http', 'ApiBasePath'];
+function MenuSearchService($http, ApiBasePath) {
   var service = this;
 
   service.getMenuCategories = function () {
