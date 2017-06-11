@@ -11,7 +11,6 @@
 <body ng-app="NarrowItDownApp">
    <div class="container" ng-controller="NarrowItDownController as narrowItDown">
     <h1>Narrow Down Your Chinese Menu Choice</h1>
-    <!-- {{ narrowItDown.found.menu_items[0].name}} -->
     <div class="form-group">
       <input type="text" placeholder="search term" class="form-control" ng-model="narrowItDown.searchTerm">
     </div>
@@ -20,7 +19,7 @@
     </div>
     <!-- found-items should be implemented as a component -->
     <found-items
-    item="narrowItDown.found"
+    found="narrowItDown.found"
     on-remove="narrowItDown.removeItem(index)">
     </found-items>
   </div>

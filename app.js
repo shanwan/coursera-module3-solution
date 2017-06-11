@@ -11,7 +11,7 @@
     var ddo = {
       templateUrl: 'foundItems.html',
       scope: {
-        items: '<',
+        found: '<',
         onRemove: '&'
       },
       controller: NarrowItDownController,
@@ -21,12 +21,6 @@
 
     return ddo;
   }
-
-  // function FoundItemsDirectiveController() {
-  //   var found = this;
-  //
-  //   console.log(found, 'found in directive');
-  // }
 
   NarrowItDownController.$inject = ['MenuSearchService'];
   function NarrowItDownController(MenuSearchService) {
@@ -38,26 +32,17 @@
       var promise = MenuSearchService.getMatchedMenuItems(narrowItDown.searchTerm);
       console.log(narrowItDown.searchTerm, 'searchTerm');
       promise.then(function (results) {
-        console.log(results.foundItems, 'controller getMatchedMenuItems');
         narrowItDown.found = results.foundItems;
         narrowItDown.searchTerm = results.searchTerm;
-        if (!results.foundItems.length) {
-        narrowItDown.message = "Nothing found";
-      } else {
-        narrowItDown.message = "";
-      }
-      })
-      .catch(function (error) {
-        console.log(error);
+        console.log(narrowItDown.found, 'controller getMatchedMenuItems');
       })
     };
   }
 
-
   MenuSearchService.$inject = ['$http', 'ApiBasePath'];
   function MenuSearchService($http, ApiBasePath) {
     var service = this;
-    
+
     service.getMatchedMenuItems = function (searchTerm) {
       return $http({
         method: "GET",

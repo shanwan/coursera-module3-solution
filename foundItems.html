@@ -1,5 +1,6 @@
+  test2
   <ol>
-    <li ng-repeat="item in narrowItDown.found.menu_items">
+    <li ng-repeat="item in narrowItDown.found">
       {{ item.name }}
       <button class="btn btn-primary" ng-click="narrowItDown.onRemove({index: $index});">Remove Item</button>
     </li>
