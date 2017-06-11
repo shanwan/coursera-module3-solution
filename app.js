@@ -33,15 +33,6 @@
     var narrowItDown = this;
 
     narrowItDown.searchTerm = "";
-    // var promise = MenuSearchService.getMenuItems();
-    // promise.then(function (response) {
-    //   console.log(response, 'response in getMatchedMenu');
-    //   narrowItDown.found = response.data;
-    // })
-    // .catch(function (error) {
-    //   // console.log("Something went terribly wrong.");
-    //   console.log(error);
-    // });
 
     narrowItDown.search = function () {
       var promise = MenuSearchService.getMatchedMenuItems(narrowItDown.searchTerm);
@@ -66,16 +57,7 @@
   MenuSearchService.$inject = ['$http', 'ApiBasePath'];
   function MenuSearchService($http, ApiBasePath) {
     var service = this;
-
-    // service.getMenuItems = function () {
-    //   var response = $http({
-    //     method: 'GET',
-    //     url: (ApiBasePath + "/menu_items.json")
-    //   });
-    //   // this response is a promise
-    //   return response
-    // }
-
+    
     service.getMatchedMenuItems = function (searchTerm) {
       return $http({
         method: "GET",
