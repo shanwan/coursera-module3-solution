@@ -37,6 +37,10 @@
         console.log(narrowItDown.found, 'controller getMatchedMenuItems');
       })
     };
+
+    narrowItDown.removeItem = function (index) {
+      narrowItDown.found.splice(index, 1);
+    }
   }
 
   MenuSearchService.$inject = ['$http', 'ApiBasePath'];

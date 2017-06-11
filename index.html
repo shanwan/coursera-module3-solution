@@ -1,28 +1,30 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Narrow Down Your Menu Choice</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.js"></script>
-    <script src="app.js"></script>
-  </head>
+<head>
+  <title>Narrow Down Your Menu Choice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.js"></script>
+  <script src="app.js"></script>
+</head>
 <body ng-app="NarrowItDownApp">
-   <div class="container" ng-controller="NarrowItDownController as narrowItDown">
+  <div class="container" ng-controller="NarrowItDownController as narrowItDown">
     <h1>Narrow Down Your Chinese Menu Choice</h1>
-    <div class="form-group">
-      <input type="text" placeholder="search term" class="form-control" ng-model="narrowItDown.searchTerm">
+    <div class="row">
+      <div class="form-group col-md-2">
+        <input type="text" placeholder="search term" class="form-control" ng-model="narrowItDown.searchTerm">
+      </div>
+      <div class="form-group narrow-button col-md-4">
+        <button class="btn btn-primary" ng-click="narrowItDown.search()">Narrow It Down For Me!</button>
+      </div>
     </div>
-    <div class="form-group narrow-button">
-      <button class="btn btn-primary" ng-click="narrowItDown.search()">Narrow It Down For Me!</button>
-    </div>
-    <!-- found-items should be implemented as a component -->
-    <found-items
-    found="narrowItDown.found"
-    on-remove="narrowItDown.removeItem(index)">
-    </found-items>
-  </div>
+  <!-- found-items should be implemented as a component -->
+  <found-items
+  found="narrowItDown.found"
+  on-remove="narrowItDown.removeItem(index)">
+</found-items>
+</div>
 
 </body>
 </html>

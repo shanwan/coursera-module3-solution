@@ -1,7 +1,8 @@
-  test2
+<div class="row">
   <ol>
     <li ng-repeat="item in narrowItDown.found">
       {{ item.name }}
-      <button class="btn btn-primary" ng-click="narrowItDown.onRemove({index: $index});">Remove Item</button>
+      <button class="btn btn-primary" ng-click="narrowItDown.removeItem({index: $index});">Remove Item</button>
     </li>
   </ol>
+</div>
